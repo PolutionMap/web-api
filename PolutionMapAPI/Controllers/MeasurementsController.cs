@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PolutionMapAPI.Data;
+using PolutionMapAPI.Models;
 
 namespace PolutionMapAPI.Controllers
 {
@@ -17,6 +18,13 @@ namespace PolutionMapAPI.Controllers
         public IActionResult GetAllMeasurement()
         {
             return Ok(_repository.GetAllMeasurments());
+        }
+
+        [HttpPost]
+        public IActionResult CreacteNewMeasurment(Measurement newMeasure)
+        {
+            _repository.CreateNewMeasurments(newMeasure);
+            return Ok();
         }
     }
 }

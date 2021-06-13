@@ -18,7 +18,7 @@ namespace PolutionMapAPI {
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IMeasurmentsRepo, MockRepo>();
+            services.AddSingleton<IMeasurmentsRepo, MockRepo>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

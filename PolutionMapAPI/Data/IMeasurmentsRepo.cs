@@ -6,5 +6,6 @@ namespace PolutionMapAPI.Data
     public interface IMeasurmentsRepo
     {
         IEnumerable<Measurement> GetAllMeasurments();
+        void CreateNewMeasurments(Measurement newMeasure);
     }
 }
