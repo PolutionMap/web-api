@@ -8,6 +8,6 @@ namespace PolutionMapAPI.Models
         public double Longitude { get; set; }
         public double Latitude { get; set; }
         public MeasurementProperties Properties { get; set; }
-        public DateTime TimeStamp { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }

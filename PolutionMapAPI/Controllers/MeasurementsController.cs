@@ -8,8 +8,8 @@ namespace PolutionMapAPI.Controllers
     [ApiController]
     public class MeasurementsController : ControllerBase
     {
-        private readonly IMeasurmentsRepo _repository;
-        public MeasurementsController(IMeasurmentsRepo repository)
+        private readonly IMeasurementsRepo _repository;
+        public MeasurementsController(IMeasurementsRepo repository)
         {
             _repository = repository;
         }
@@ -17,13 +17,13 @@ namespace PolutionMapAPI.Controllers
         [HttpGet]
         public IActionResult GetAllMeasurement()
         {
-            return Ok(_repository.GetAllMeasurments());
+            return Ok(_repository.GetAllMeasurements());
         }
 
         [HttpPost]
-        public IActionResult CreacteNewMeasurment(Measurement newMeasure)
+        public IActionResult CreateNewMeasurement(Measurement newMeasure)
         {
-            _repository.CreateNewMeasurments(newMeasure);
+            _repository.CreateNewMeasurement(newMeasure);
             return Ok();
         }
     }
