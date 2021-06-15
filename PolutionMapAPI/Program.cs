@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace PolutionMapAPI
 {
@@ -15,6 +16,10 @@ namespace PolutionMapAPI
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    
+                    var port = Environment.GetEnvironmentVariable("PORT");
+                    if(! string.IsNullOrEmpty(port))
+                        webBuilder.UseUrls("http://*:" + port);
                 });
     }
 }
