@@ -1,11 +1,10 @@
-using System.Runtime.Serialization;
 using PolutionMapAPI.Models;
 using System;
 using System.Collections.Generic;
 
 namespace PolutionMapAPI.Data
 {
-    public class MockRepo : IMeasurmentsRepo
+    public class MockRepo : IMeasurementsRepo
     {
         private readonly List<Measurement> measurments = new List<Measurement>
         {
@@ -15,7 +14,7 @@ namespace PolutionMapAPI.Data
                 Latitude = 53.222923278808594,
                 Longitude = 56.87229206431822,
                 Properties = new (15, 145),
-                TimeStamp = DateTime.Now.AddDays(-1)
+                Timestamp = DateTime.Now,
             },
             new Measurement
             {
@@ -23,15 +22,15 @@ namespace PolutionMapAPI.Data
                 Latitude = 53.222923278808594,
                 Longitude = 56.87229206431822,
                 Properties = new (15, 145),
-                TimeStamp = DateTime.Now.AddDays(-1)
+                Timestamp = DateTime.Now.AddDays(-1)
             }
         };
-        public void CreateNewMeasurments(Measurement newMeasure)
+        public void CreateNewMeasurement(Measurement newMeasure)
         {
             measurments.Add(newMeasure);
         }
 
-        public IEnumerable<Measurement> GetAllMeasurments()
+        public IEnumerable<Measurement> GetAllMeasurements()
         {
             return measurments;
         }
