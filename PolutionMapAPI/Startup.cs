@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PolutionMapAPI.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace PolutionMapAPI {
     public class Startup
@@ -18,6 +19,7 @@ namespace PolutionMapAPI {
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<MeasurementContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("MeasurementConnection")));
             services.AddSingleton<IMeasurementsRepo, MockRepo>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
