@@ -2,5 +2,8 @@
 
 namespace PolutionMapAPI.DTO
 {
-    public record MeasurementsReadDTO(string Type, List<Feature> Features);
+    public record MeasurementsReadDTO
+    {
+        public Feature Feature { get; set; }
+    }
 }

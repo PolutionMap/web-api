@@ -1,6 +1,10 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PolutionMapAPI.Data;
+using PolutionMapAPI.DTO;
 using PolutionMapAPI.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PolutionMapAPI.Controllers
 {
@@ -8,23 +12,35 @@ namespace PolutionMapAPI.Controllers
     [ApiController]
     public class MeasurementsController : ControllerBase
     {
-        private readonly IMeasurementsRepo _repository;
-        public MeasurementsController(IMeasurementsRepo repository)
+        private readonly IMeasurementsRepo repository;
+        private readonly IMapper mapper;
+
+        public MeasurementsController(IMeasurementsRepo repository, IMapper mapper)
         {
-            _repository = repository;
+            this.repository = repository;
+            this.mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult GetAllMeasurement()
         {
-            return Ok(_repository.GetAllMeasurements());
+            var recs = repository.GetAllMeasurements();
+            if(recs != null)
+            {
+                return Ok(mapper.Map<List<Measurement>, List<MeasurementsReadDTO>>(recs.ToList()));
+            }
+            return new NotFoundResult();
         }
 
         [HttpPost]
-        public IActionResult CreateNewMeasurement(Measurement newMeasure)
+        public IActionResult CreateNewMeasurement(MeasurementsCreateDTO newMeasure)
         {
-            _repository.CreateNewMeasurement(newMeasure);
-            return Ok();
+            var measurementModel = mapper.Map<Measurement>(newMeasure);
+            if(measurementModel != null)
+            {
+                return Ok(measurementModel);
+            }
+            return new BadRequestResult();
         }
     }
 }
