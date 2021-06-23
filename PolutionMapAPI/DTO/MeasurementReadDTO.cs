@@ -1,8 +1,10 @@
-﻿namespace PolutionMapAPI.DTO
+﻿using System.Collections.Generic;
+
+namespace PolutionMapAPI.DTO
 {
     public record MeasurementsReadDTO
     {
         public string Type { get; set; }
-        public Feature Features { get; set; }
+        public IEnumerable<Feature> Features { get; set; }
     }
 }
