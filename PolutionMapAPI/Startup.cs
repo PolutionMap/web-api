@@ -8,7 +8,8 @@ using PolutionMapAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace PolutionMapAPI {
+namespace PolutionMapAPI
+{
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -24,6 +25,7 @@ namespace PolutionMapAPI {
             services.AddScoped<IMeasurementsRepo, SqlMeasurementRepo>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllers();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PolutionMapAPI", Version = "v1" });
