@@ -1,16 +1,18 @@
-using System;
-using System.Collections.Generic;
 using PolutionMapAPI.Models;
+using System.Collections.Generic;
 
 namespace PolutionMapAPI.DTO
 {
-    public record MeasurementsCreateDTO(List<Feature> Features);
+    public record MeasurementsCreateDTO(string Type, List<Feature> Features);
     public record Feature
     {
-        public int Noise { get; set; }
-        public int Polution { get; set; }
-        public DateTime Timestamp { get; set; }
+        public string Type { get; set; }
+        public MeasurementProperties Properties { get; set; }
         public Geometry Geometry { get; set; }
     }
-    public record Geometry (List<double> Coordinates);
+    public record Geometry
+    {
+        public string Type { get; set; }
+        public List<double> Coordinates { get; set; }
+    }
 }

@@ -1,5 +1,6 @@
+using GeoJSON.Net.Geometry;
+using PolutionMapAPI.Helpers;
 using PolutionMapAPI.Models;
-using System;
 using System.Collections.Generic;
 
 namespace PolutionMapAPI.Data
@@ -17,7 +18,7 @@ namespace PolutionMapAPI.Data
 
         public IEnumerable<Measurement> GetAllMeasurements()
         {
-            return measurments;
+            return measurments.SetRandProps();
         }
     }
 }
