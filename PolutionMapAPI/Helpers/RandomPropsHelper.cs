@@ -13,13 +13,14 @@ namespace PolutionMapAPI.Helpers
             return measurements.Select(m => new Measurement()
             {
                 Id = m.Id,
-                Point = m.Point,
+                Latitude = m.Latitude,
+                Longitude = m.Longitude,
                 Properties = new MeasurementProperties()
                 {
                     Noise = rand.Next(0, 40),
                     Polution = rand.Next(0, 130)
                 }
-            })
+            });
         }
     }
 }

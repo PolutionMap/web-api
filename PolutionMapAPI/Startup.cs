@@ -23,7 +23,6 @@ namespace PolutionMapAPI
         {
             services.AddDbContext<MeasurementContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("MeasurementConnection")));
             services.AddScoped<IMeasurementsRepo, SqlMeasurementRepo>();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>

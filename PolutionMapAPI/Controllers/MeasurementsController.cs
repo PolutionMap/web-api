@@ -1,6 +1,5 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using PolutionMapAPI.Data;
 using PolutionMapAPI.DTO;
 using PolutionMapAPI.Models;
@@ -28,7 +27,7 @@ namespace PolutionMapAPI.Controllers
             var recs = repository.GetAllMeasurements();
             if(recs != null)
             {
-                return Ok(mapper.Map<List<Measurement>, List<MeasurementsReadDTO>>(recs.ToList()));
+                return Ok(_mapper.Map<IEnumerable<Measurement>, MeasurementsReadDTO>(recs));
             }
             return new NotFoundResult();
         }
