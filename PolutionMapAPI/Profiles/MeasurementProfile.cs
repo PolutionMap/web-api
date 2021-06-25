@@ -20,11 +20,15 @@ namespace PolutionMapAPI.Profiles
                             Coordinates = new List<double>()
                             {
                                 m.Longitude,
-                                m.Latitude
+                                m.Latitude,
                             },
                             Type = "Point"
                         },
-                        Properties = m.Properties,
+                        Properties = new MeasurementPropertiesReadDTO() 
+                        { 
+                            Noise = m.Properties.Noise,
+                            Polution = m.Properties.Polution,
+                        },
                         Type = "Feature"
                     })))
                 .ForPath(
