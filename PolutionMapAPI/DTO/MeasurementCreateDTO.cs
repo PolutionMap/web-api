@@ -1,4 +1,3 @@
-using PolutionMapAPI.Models;
 using System.Collections.Generic;
 
 namespace PolutionMapAPI.DTO
@@ -7,7 +6,7 @@ namespace PolutionMapAPI.DTO
     public record Feature
     {
         public string Type { get; set; }
-        public MeasurementProperties Properties { get; set; }
+        public MeasurementPropertiesReadDTO Properties { get; set; }
         public Geometry Geometry { get; set; }
     }
     public record Geometry

@@ -10,16 +10,12 @@ namespace PolutionMapAPI.Helpers
         private static Random rand = new Random();
         public static IEnumerable<Measurement> SetRandProps(this IEnumerable<Measurement> measurements)
         {
-            return measurements.Select(m => new Measurement()
+            return measurements.Select((m, i) => new Measurement()
             {
                 Id = m.Id,
                 Latitude = m.Latitude,
                 Longitude = m.Longitude,
-                Properties = new MeasurementProperties()
-                {
-                    Noise = rand.Next(0, 40),
-                    Polution = rand.Next(0, 130)
-                }
+                Properties = new (i, rand.Next(0, 40), rand.Next(0, 130), m.Id),
             });
         }
     }

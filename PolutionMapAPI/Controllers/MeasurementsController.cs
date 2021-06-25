@@ -4,7 +4,6 @@ using PolutionMapAPI.Data;
 using PolutionMapAPI.DTO;
 using PolutionMapAPI.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PolutionMapAPI.Controllers
 {
@@ -27,7 +26,7 @@ namespace PolutionMapAPI.Controllers
             var recs = repository.GetAllMeasurements();
             if(recs != null)
             {
-                return Ok(_mapper.Map<IEnumerable<Measurement>, MeasurementsReadDTO>(recs));
+                return Ok(mapper.Map<IEnumerable<Measurement>, MeasurementsReadDTO>(recs));
             }
             return new NotFoundResult();
         }
